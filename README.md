@@ -7,6 +7,21 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+Api Documentation
+Business:
+1. Business Register: http://127.0.0.1:8000/api/register (post)
+Request=>{"name"
+"email"
+"password"
+"password_confirmation"}
+Response=>{"User details","Token"}
+2. Business Login: http://127.0.0.1:8000/api/login (post)
+Request=>{"email","password"}
+Response=>{"User details", "Token"}
+3. Business Logout: http://127.0.0.1:8000/api/logout (post)
+Request=>{Authorization Token from login}
+Response=>{null}
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
