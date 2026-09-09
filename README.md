@@ -8,6 +8,7 @@
 </p>
 
 Api Documentation
+
 Business:
 1. Business Register: http://127.0.0.1:8000/api/register (post)
 Request=>{"name"
@@ -21,6 +22,65 @@ Response=>{"User details", "Token"}
 3. Business Logout: http://127.0.0.1:8000/api/logout (post)
 Request=>{Authorization Token from login}
 Response=>{null}
+
+Client:
+1. Create Client: http://127.0.0.1:8000/api/clients (post)
+Request=>{"client_name", "email", "phone_number", "Authorization Token"}
+Response=>{"client details"}
+2. Get all client: http://127.0.0.1:8000/api/clients (get)
+Request=>{Authorization Token}
+Response=>{All business's clients}
+3. Get client by id: http://127.0.0.1:8000/api/clients/{id} (get)
+Request=>{Authorization Token}
+Response=>{Client details}
+4. Update client: http://127.0.0.1:8000/api/clients/{id} (put)
+Request=>{ "client_name":"",
+    "email":"",
+    "phone_number":""}
+Response=>{Update User's details}
+5. Delete client: http://127.0.0.1:8000/api/clients/{id} (delete)
+Request=>{Authorization Token}
+Response=>{Null}
+
+Invoice:
+1. Create Invoice: http://127.0.0.1:8000/api/invoices (post)
+Request=>{"client_id":
+    "invoice_number":
+    "due_date":
+    "items":[ "item":
+    "quantity":
+    "unit_price":
+    ]
+   }
+Response=>{"Invoice details", "Client details"}
+2. Get all Invoice: http://127.0.0.1:8000/api/invoices (get)
+Request=>{Authorization Token}
+Response=>{"Invoice details", "Client details"}
+3. Get Invoice by Id: http://127.0.0.1:8000/api/invoices/{id} (get)
+Request=>{Authorization Token}
+Response=>{"Invoice details", "Client details"}
+4. Update Invoice: http://127.0.0.1:8000/api/invoices/{id} (put)
+Request=>{
+    "invoice_number":"",
+    "due_date":"",
+    "items":[
+        {
+            "item":"",
+            "quantity":"",
+            "unit_price":""
+        }
+    ]
+}
+Response=>{"Invoice details", "Client details"}
+5. Delete Invoice: http://127.0.0.1:8000/api/invoices{id} (delete)
+Request=>{Authorization Token}
+Response=>{Null}
+6. Send Invoice: http://127.0.0.1:8000/api/invoices/{id}/send (post)
+Request=>{Authorization Token}
+Response=> {Invoice details}
+7. Mark Paid Invoice: http://127.0.0.1:8000/api/invoices/{id}/mark-paid (post)
+Request=>{Authorization Token}
+Response=> {Invoice details}
 
 ## About Laravel
 
