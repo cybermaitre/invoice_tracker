@@ -81,6 +81,12 @@ Response=> {Invoice details}
 7. Mark Paid Invoice: http://127.0.0.1:8000/api/invoices/{id}/mark-paid (post)
 Request=>{Authorization Token}
 Response=> {Invoice details}
+8. Download Pdf: http://127.0.0.1:8000/api/invoices/{id}/pdf (get)
+Request=>{Authorization Token}
+Response=> {Invoice download}
+9. Overdue Invoices: http://127.0.0.1:8000/api/invoices/overdue (get)
+Request=>{Authorization Token}
+Response=> {Overdue Invoice details}
 
 ## About Laravel
 
