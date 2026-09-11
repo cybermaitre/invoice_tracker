@@ -1,15 +1,15 @@
 <h2>Invoice {{ $invoice->invoice_number }}</h2>
-<p>Hello {{ $invoice->client->name }},</p>
+<p>Hello {{ $invoice->client->client_name }},</p>
 <p>Please find your invoice details below.</p>
 
 <table cellpadding="8">
     <thead>
-        <tr><th>Description</th><th>Qty</th><th>Unit price</th></tr>
+        <tr><th>Item</th><th>Qty</th><th>Unit price</th></tr>
     </thead>
     <tbody>
         @foreach ($invoice->items as $item)
             <tr>
-                <td>{{ $item->description }}</td>
+                <td>{{ $item->item }}</td>
                 <td>{{ $item->quantity }}</td>
                 <td>{{ number_format($item->unit_price, 2) }}</td>
             </tr>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Mail\InvoiceMailable;
 use App\Models\Invoice;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -140,8 +141,6 @@ class InvoiceController extends Controller
         return response()->json(['message' => 'Invoice deleted']);
     }
 
-
-
     public function send(Request $request, Invoice $invoice)
     {
         if ($invoice->user_id !== $request->user()->id) {
@@ -183,5 +182,29 @@ class InvoiceController extends Controller
         ]);
 
         return response()->json($invoice->fresh()->load('items', 'client'));
+    }
+
+    public function downloadPdf(Request $request, Invoice $invoice)
+    {
+        if ($invoice->user_id !== $request->user()->id) {
+            return response()->json(['message' => 'Not found'], 404);
+        }
+
+        $pdf = Pdf::loadView('pdf.invoice', [
+            'invoice' => $invoice->load('items', 'client'),
+        ]);
+
+        return $pdf->download("invoice-{$invoice->invoice_number}.pdf");
+    }
+
+    public function overdue(Request $request)
+    {
+        $invoices = $request->user()->invoices()
+            ->where('status', 'overdue')
+            ->with('items', 'client')
+            ->orderBy('due_date')
+            ->get();
+
+        return response()->json($invoices);
     }
 }

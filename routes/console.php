@@ -2,8 +2,7 @@
 
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
-//use App\Console\Commands\CheckOverdueInvoices;
-//use Illuminate\Support\Facades\Schedule;
+
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
@@ -11,4 +10,3 @@ Artisan::command('inspire', function () {
 
 
 
-//Schedule::command(CheckOverdueInvoices::class)->daily();

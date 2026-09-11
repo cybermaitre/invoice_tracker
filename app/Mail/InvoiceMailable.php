@@ -13,7 +13,7 @@ use Illuminate\Queue\SerializesModels;
 
 
 
-class InvoiceMailable extends Mailable implements ShouldQueue
+class InvoiceMailable extends Mailable 
 {
     use Queueable, SerializesModels;
 
